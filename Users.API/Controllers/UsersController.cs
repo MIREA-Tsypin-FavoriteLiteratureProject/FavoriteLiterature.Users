@@ -5,6 +5,8 @@ using Users.Domain.Authentication.Requests.Commands;
 using Users.Domain.Authentication.Responses.Commands;
 using Users.Domain.Registration.Requests.Commands;
 using Users.Domain.Registration.Responses.Commands;
+using Users.Domain.Users.Requests.Queries;
+using Users.Domain.Users.Responses.Queries;
 
 namespace Users.API.Controllers;
 
@@ -16,15 +18,19 @@ public class UsersController : BaseApiController
 
     [AllowAnonymous]
     [HttpPost("registration")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
     public async Task<RegistrationResponse> RegisterAsync(RegistrationCommand command, CancellationToken cancellationToken)
         => await _mediator.Send(command, cancellationToken);
 
     [AllowAnonymous]
     [HttpPost("authentication")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
     public async Task<AuthenticationResponse> GetTokenAsync(AuthenticationCommand command, CancellationToken cancellationToken) 
         => await _mediator.Send(command, cancellationToken);
+
+    [HttpGet("current")]
+    public async Task<GetUserResponse> GetCurrentUserAsync(CancellationToken cancellationToken) 
+        => await _mediator.Send(new GetUserQuery(GetCurrentUserId()), cancellationToken);
+
+    [HttpGet("{id:guid}")]
+    public async Task<GetUserResponse> GetAsync(Guid id, CancellationToken cancellationToken) 
+        => await _mediator.Send(new GetUserQuery(id), cancellationToken);
 }

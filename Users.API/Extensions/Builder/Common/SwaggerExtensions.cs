@@ -13,7 +13,7 @@ public static class SwaggerExtensions
             {
                 Version = "v1",
                 Title = "Favorite literature Users.API",
-                Description = "Сервис по работе с начинающими писателями",
+                Description = "Сервис по работе с начинающими писателями. Сервер по работе с пользователями.",
                 Contact = new OpenApiContact
                 {
                     Name = "Цыпин Илья Павлович",
