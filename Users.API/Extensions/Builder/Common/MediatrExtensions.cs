@@ -21,5 +21,6 @@ public static class MediatrExtensions
         builder.Services.AddTransient<IRequestHandler<AuthenticationCommand, AuthenticationResponse>, AuthenticationCommandHandler>();
 
         builder.Services.AddTransient<IRequestHandler<GetUserQuery, GetUserResponse>, GetUserQueryHandler>();
+        builder.Services.AddTransient<IRequestHandler<GetAllUsersQuery, GetAllUsersResponse>, GetAllUsersQueryHandler>();
     }
 }

@@ -33,4 +33,8 @@ public class UsersController : BaseApiController
     [HttpGet("{id:guid}")]
     public async Task<GetUserResponse> GetAsync(Guid id, CancellationToken cancellationToken) 
         => await _mediator.Send(new GetUserQuery(id), cancellationToken);
+
+    [HttpGet]
+    public async Task<GetAllUsersResponse> GetAllAsync([FromQuery] GetAllUsersQuery query, CancellationToken cancellationToken)
+        => await _mediator.Send(query, cancellationToken);
 }

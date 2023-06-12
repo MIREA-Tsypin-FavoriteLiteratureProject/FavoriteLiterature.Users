@@ -12,5 +12,6 @@ public class UserProfile : Profile
         CreateMap<RegistrationCommand, User>();
 
         CreateMap<User, GetUserResponse>();
+        CreateMap<User, GetAllUsersItemResponse>();
     }
 }
