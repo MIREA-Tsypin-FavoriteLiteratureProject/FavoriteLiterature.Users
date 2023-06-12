@@ -4,6 +4,8 @@ namespace Users.Data.Entities;
 
 public sealed class User : BaseEntity
 {
+    public Guid Id { get; init; }
+
     public string LastName { get; set; } = null!;
 
     public string FirstName { get; set; } = null!;
@@ -14,8 +16,11 @@ public sealed class User : BaseEntity
 
     public DateTimeOffset DateOfBirth { get; set; }
 
-    public string RoleId { get; set; } = null!;
+    public string RoleName { get; set; } = "user";
     public Role Role { get; set; }
+
+    public User()
+        => Id = Guid.NewGuid();
 
     public User SetPassword(string password)
     {

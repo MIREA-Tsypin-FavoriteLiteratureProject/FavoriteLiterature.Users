@@ -10,5 +10,5 @@ public class GetUserResponse
 
     public DateTimeOffset DateOfBirth { get; set; }
 
-    public string RoleId { get; set; } = null!;
+    public string RoleName { get; set; } = null!;
 }

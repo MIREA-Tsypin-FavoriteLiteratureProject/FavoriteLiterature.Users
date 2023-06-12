@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Users.API.Extensions;
 using Users.API.Extensions.Builder;
 using Users.API.Extensions.Builder.Common;
-using Users.Application.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +13,7 @@ builder.Services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearerAuthentication(builder.Configuration);
 
+builder.AddRolePolicy();
 builder.AddRepositories();
 builder.AddAutoMapper();
 builder.AddMediatr();

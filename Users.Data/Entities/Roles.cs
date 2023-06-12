@@ -1,8 +1,12 @@
-﻿namespace Users.Data.Entities;
+﻿using Users.Data.Entities.Abstract;
 
-public class Role
+namespace Users.Data.Entities;
+
+public class Role : BaseEntity
 {
     public string Name { get; set; } = null!;
+
+    public int Weight { get; set; }
 
     public string? Description { get; set; }
 

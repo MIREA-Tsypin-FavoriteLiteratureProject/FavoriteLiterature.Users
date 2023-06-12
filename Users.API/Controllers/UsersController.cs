@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Users.Application.Policies;
 using Users.Domain.Authentication.Requests.Commands;
 using Users.Domain.Authentication.Responses.Commands;
 using Users.Domain.Registration.Requests.Commands;
@@ -31,10 +32,12 @@ public class UsersController : BaseApiController
         => await _mediator.Send(new GetUserQuery(GetCurrentUserId()), cancellationToken);
 
     [HttpGet("{id:guid}")]
+    [Authorize(Policy = nameof(RolePolicy.Critic))]
     public async Task<GetUserResponse> GetAsync(Guid id, CancellationToken cancellationToken) 
         => await _mediator.Send(new GetUserQuery(id), cancellationToken);
 
     [HttpGet]
+    [Authorize(Policy = nameof(RolePolicy.Critic))]
     public async Task<GetAllUsersResponse> GetAllAsync([FromQuery] GetAllUsersQuery query, CancellationToken cancellationToken)
         => await _mediator.Send(query, cancellationToken);
 }

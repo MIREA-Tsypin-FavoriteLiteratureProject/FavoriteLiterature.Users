@@ -43,7 +43,7 @@ public sealed class AuthenticationCommandHandler : IRequestHandler<Authenticatio
         {
             new Claim(ClaimTypes.NameIdentifier, userData.Id.ToString()),
             new Claim(ClaimTypes.Email, userData.Email),
-            new (ClaimTypes.Role, userData.RoleId)
+            new (ClaimTypes.Role, userData.RoleName)
         };
 
         var accessToken = GenerateAccessToken(claims);

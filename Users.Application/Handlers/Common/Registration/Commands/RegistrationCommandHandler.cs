@@ -31,9 +31,6 @@ public sealed class RegistrationCommandHandler : IRequestHandler<RegistrationCom
         var user = _mapper.Map<User>(command)
             .SetPassword(command.Password);
 
-        // TODO: Изменить в будущем
-        user.RoleId = "user";
-
         await _unitOfWork.BeginTransactionAsync(new[]
         {
             () => _unitOfWork.UsersRepository.Add(user)
