@@ -6,6 +6,8 @@ using Users.Application.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddJsonFile("appsettings.Local.json", optional: true);
+
 builder.AddPostgresDatabase();
 builder.Services.AddControllers();
 builder.Services
