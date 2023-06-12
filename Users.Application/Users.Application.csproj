@@ -9,10 +9,7 @@
     <ItemGroup>
       <PackageReference Include="AutoMapper" />
       <PackageReference Include="MediatR" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Handlers\Common\Authentication\Commands\" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
     </ItemGroup>
 
     <ItemGroup>
