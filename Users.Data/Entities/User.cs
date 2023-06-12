@@ -13,4 +13,10 @@ public sealed class User : BaseEntity
     public string PasswordHash { get; set; } = null!;
 
     public DateTimeOffset DateOfBirth { get; set; }
+
+    public User SetPassword(string password)
+    {
+        PasswordHash = BCrypt.Net.BCrypt.HashPassword(password);
+        return this;
+    }
 }

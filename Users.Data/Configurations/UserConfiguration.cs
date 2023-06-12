@@ -12,6 +12,7 @@ public sealed class UserConfiguration : BaseEntityConfiguration<User>
     {
         builder.ToTable(UsersApiTables.Users);
         builder.HasKey(x => x.Id).HasName($"{UsersApiTables.Users}_pkey");
+        builder.HasIndex(x => x.Email).IsUnique();
 
         builder.Property(x => x.LastName).HasColumnName("last_name").HasMaxLength(100).IsRequired();
         builder.Property(x => x.FirstName).HasColumnName("first_name").HasMaxLength(100).IsRequired();
