@@ -19,5 +19,11 @@ public sealed class UserConfiguration : BaseEntityConfiguration<User>
         builder.Property(x => x.Email).HasColumnName("email").HasMaxLength(100).IsRequired();
         builder.Property(x => x.PasswordHash).HasColumnName("password_hash").IsRequired();
         builder.Property(x => x.DateOfBirth).HasColumnName("date_of_birth");
+        builder.Property(x => x.RoleId).HasColumnName($"{UsersApiTables.Roles}_id").IsRequired();
+
+        builder
+            .HasOne(user => user.Role)
+            .WithMany(role => role.Users)
+            .HasForeignKey(x => x.RoleId);
     }
 }
