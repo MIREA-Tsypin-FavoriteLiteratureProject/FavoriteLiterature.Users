@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{8D7A1B
 		LICENSE = LICENSE
 		NuGet.Config = NuGet.Config
 		README.md = README.md
+		docker-compose.yml = docker-compose.yml
+		Dockerfile = Dockerfile
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Users.API", "Users.API\Users.API.csproj", "{6365ABEE-AD6E-4B90-980B-8527835E78C0}"
