@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Users.API.Extensions;
 using Users.API.Extensions.Builder;
 using Users.API.Extensions.Builder.Common;
+using Users.API.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,14 +17,19 @@ builder.Services
 builder.AddRolePolicy();
 builder.AddRepositories();
 builder.AddAutoMapper();
+builder.AddCustomMiddlewares();
 builder.AddMediatr();
 builder.AddNormalizeRoute();
 builder.AddSwagger();
 
 var app = builder.Build();
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 app.Run();
