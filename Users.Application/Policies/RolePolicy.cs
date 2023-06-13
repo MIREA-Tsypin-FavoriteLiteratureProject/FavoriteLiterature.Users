@@ -2,7 +2,11 @@
 
 public enum RolePolicy
 {
-    User,
+    Owner,
+    Admin,
+    Moderator,
+    Critic,
     Author,
-    Critic
+    VipUser,
+    User,
 }

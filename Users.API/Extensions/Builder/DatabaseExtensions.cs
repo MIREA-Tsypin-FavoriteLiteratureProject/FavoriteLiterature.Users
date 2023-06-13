@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Users.Data;
+using Users.Data.Common;
 
 namespace Users.API.Extensions.Builder;
 
@@ -15,5 +16,13 @@ public static class DatabaseExtensions
         }
 
         builder.Services.AddDbContext<FavoriteLiteratureUsersDbContext>(options => options.UseNpgsql(connectionString));
+    }
+
+    public static void SeedDatabase(this WebApplication app)
+    {
+        using var serviceScope = app.Services.CreateScope();
+        var mainContext = serviceScope.ServiceProvider.GetRequiredService<FavoriteLiteratureUsersDbContext>();
+
+        DatabaseInitializer.Initialize(mainContext);
     }
 }

@@ -15,6 +15,6 @@ public sealed class RoleConfiguration : BaseEntityConfiguration<Role>
 
         builder.Property(x => x.Name).HasColumnName("name").HasMaxLength(20).IsRequired();
         builder.Property(x => x.Weight).HasColumnName("weight").IsRequired();
-        builder.Property(x => x.Description).HasColumnName("description").HasMaxLength(50);
+        builder.Property(x => x.Description).HasColumnName("description").HasMaxLength(150);
     }
 }
